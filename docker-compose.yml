@@ -1,0 +1,28 @@
+##
+# LocalGovDrupal CI
+---
+version: '3'
+    
+services:
+
+  drupal:
+    image: localgovdrupal-drupal:latest
+    build: .
+    container_name: drupal
+    environment:
+      SIMPLETEST_BASE_URL: 'http://localhost'
+    ports:
+      - "80:80"
+    volumes:
+      - ./html:/var/www/html
+
+  database:
+    image: mysql:5.7
+    container_name: database
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+      MYSQL_DATABASE: database
+      MYSQL_USER: database
+      MYSQL_PASSWORD: database
+    ports:
+      - "3306:3306"
