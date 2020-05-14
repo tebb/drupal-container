@@ -23,6 +23,9 @@ jobs:
       - name: Start Docker environment
         run: docker-compose up -d
       
+      - name: Ensure everything is up to date
+        run: docker exec -u docker -t drupal bash -c "cd /var/www/html && composer install"
+      
       - name: Check coding standards
         run: docker exec -t drupal bash -c "cd /var/www/html && ./bin/phpcs"
       
