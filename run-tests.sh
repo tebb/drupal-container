@@ -18,3 +18,4 @@ docker exec -t drupal bash -c "cd /var/www/html && ./bin/phpstan analyse -c ./ph
 echo "Running tests"
 docker exec -t drupal bash -c "mkdir -p /var/www/html/web/sites/simpletest && chmod 777 /var/www/html/web/sites/simpletest"
 docker exec -u docker -t drupal bash -c "cd /var/www/html && ./bin/phpunit --testdox"
+
