@@ -16,6 +16,8 @@ services:
       - "80:80"
     volumes:
       - ./html:/var/www/html
+    depends_on:
+      - "database"
 
   database:
     image: mysql:5.7
