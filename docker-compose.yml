@@ -12,6 +12,7 @@ services:
       SIMPLETEST_BASE_URL: 'http://drupal'
       SIMPLETEST_DB: 'mysql://database:database@database/database'
       MINK_DRIVER_ARGS_WEBDRIVER: '["chrome", {"browserName":"chrome","chromeOptions":{"args":["--disable-gpu","--headless", "--no-sandbox", "--disable-dev-shm-usage"]}}, "http://chrome:9515"]'
+      SYMFONY_DEPRECATIONS_HELPER: weak
     ports:
       - "80:80"
     volumes:
