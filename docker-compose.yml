@@ -10,26 +10,13 @@ services:
     container_name: drupal
     environment:
       SIMPLETEST_BASE_URL: 'http://drupal'
-      SIMPLETEST_DB: 'mysql://database:database@database/database'
+      SIMPLETEST_DB: 'sqlite://sites/default/files/.ht.sqlite'
       MINK_DRIVER_ARGS_WEBDRIVER: '["chrome", {"browserName":"chrome","chromeOptions":{"args":["--disable-gpu","--headless", "--no-sandbox", "--disable-dev-shm-usage"]}}, "http://chrome:9515"]'
       SYMFONY_DEPRECATIONS_HELPER: weak
     ports:
       - "80:80"
     volumes:
       - ./html:/var/www/html
-    depends_on:
-      - "database"
-
-  database:
-    image: mysql:5.7
-    container_name: database
-    environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
-      MYSQL_DATABASE: database
-      MYSQL_USER: database
-      MYSQL_PASSWORD: database
-    ports:
-      - "3306:3306"
 
   chrome:
     image: drupalci/webdriver-chromedriver:production
