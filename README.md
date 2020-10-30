@@ -13,8 +13,8 @@ Something like:
 ```bash
 git clone git@github.com:localgovdrupal/drupal-container.git localgovdrupal-testing
 cd localgovdrupal-testing
-composer create-project --stability dev localgovdrupal/localgov-project html
 docker-compose up -d
+docker exec -u docker -t drupal /usr/local/bin/composer create-project --stability dev localgovdrupal/localgov-project /var/www/html
 ./run-tests.sh
 docker-compose stop
 ```
