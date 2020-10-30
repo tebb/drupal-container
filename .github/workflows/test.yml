@@ -18,7 +18,7 @@ jobs:
         run: docker-compose up -d
 
       - name: Create LocalGov Drupal project
-        run: docker exec -u docker -t drupal /usr/local/bin/composer create-project --stability dev localgovdrupal/localgov-project /var/www/html
+        run: docker exec -u docker -t drupal bash -c "mkdir -p /var/www/html && /usr/local/bin/composer create-project --stability dev localgovdrupal/localgov-project /var/www/html"
 
       - name: Run tests
         run: ./run-tests.sh
