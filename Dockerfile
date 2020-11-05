@@ -55,7 +55,7 @@ COPY config/php/docker.ini /etc/php/7.2/conf.d/docker.ini
 RUN ln -s /etc/php/7.2/conf.d/docker.ini /etc/php/7.2/apache2/conf.d/90-docker.ini
 
 # Install Composer,
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.10.16
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 EXPOSE 80
 
