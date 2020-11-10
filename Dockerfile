@@ -10,6 +10,7 @@ RUN apt-get update && \
     apt-get install -y \
       apache2 \
       curl \
+      git \
       libapache2-mod-php7.2 \
       mysql-client \
       patch \
@@ -22,6 +23,7 @@ RUN apt-get update && \
       php7.2-mbstring \
       php7.2-mysql \
       php7.2-opcache \
+      php7.2-sqlite \
       php7.2-xml \
       php7.2-zip \
       php-memcached  && \
@@ -53,7 +55,7 @@ COPY config/php/docker.ini /etc/php/7.2/conf.d/docker.ini
 RUN ln -s /etc/php/7.2/conf.d/docker.ini /etc/php/7.2/apache2/conf.d/90-docker.ini
 
 # Install Composer,
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --version=1.10.16
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 EXPOSE 80
 
