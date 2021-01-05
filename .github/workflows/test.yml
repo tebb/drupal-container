@@ -12,6 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
+
       - uses: actions/checkout@v2
 
       - name: Create LocalGov Drupal project
