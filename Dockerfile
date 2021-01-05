@@ -1,7 +1,7 @@
 ##
 # LocalGovDrupal web container.
 
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -11,21 +11,20 @@ RUN apt-get update && \
       apache2 \
       curl \
       git \
-      libapache2-mod-php7.2 \
       mysql-client \
       patch \
-      php7.2 \
-      php7.2-cli \
-      php7.2-common \
-      php7.2-curl \
-      php7.2-json \
-      php7.2-gd \
-      php7.2-mbstring \
-      php7.2-mysql \
-      php7.2-opcache \
-      php7.2-sqlite \
-      php7.2-xml \
-      php7.2-zip \
+      php7.4 \
+      php7.4-cli \
+      php7.4-common \
+      php7.4-curl \
+      php7.4-json \
+      php7.4-gd \
+      php7.4-mbstring \
+      php7.4-mysql \
+      php7.4-opcache \
+      php7.4-sqlite \
+      php7.4-xml \
+      php7.4-zip \
       php-memcached  && \
     apt-get clean
 
@@ -51,8 +50,8 @@ RUN a2enmod \
     rm -fr /var/www/*
 
 # Configure PHP.
-COPY config/php/docker.ini /etc/php/7.2/conf.d/docker.ini
-RUN ln -s /etc/php/7.2/conf.d/docker.ini /etc/php/7.2/apache2/conf.d/90-docker.ini
+COPY config/php/docker.ini /etc/php/7.4/conf.d/docker.ini
+RUN ln -s /etc/php/7.4/conf.d/docker.ini /etc/php/7.4/apache2/conf.d/90-docker.ini
 
 # Install Composer,
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
