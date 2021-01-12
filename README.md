@@ -24,6 +24,6 @@ The Docker image lives in [Docker Hub](https://hub.docker.com/repository/docker/
 Build with:
 
 ```bash
-docker build . -t localgovdrupal/apache-php:php7.2
-docker push localgovdrupal/apache-php:php7.2
+docker build . -t localgovdrupal/apache-php:php7.4
+docker push localgovdrupal/apache-php:php7.4
 ```
