@@ -40,7 +40,9 @@ docker exec -u docker -t drupal bash -c 'sed -i "s#http://localgov.lndo.site#htt
 
 # TODO: Where does paratest get it's todo list from?
 # ... change it to the supplied test files
-docker exec -u docker -t drupal bash -c "cd /var/www/html && ./bin/paratest --processes=4 --verbose=1"
+# Experiment: 8 processes in case it's disk/db bound
+# docker exec -u docker -t drupal bash -c "cd /var/www/html && ./bin/paratest --processes=4 --verbose=1"
+docker exec -u docker -t drupal bash -c "cd /var/www/html && ./bin/paratest --processes=8 --verbose=1"
 if [ $? -ne 0 ]; then
   ((RESULT++))
 fi
