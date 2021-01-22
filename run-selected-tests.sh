@@ -33,7 +33,7 @@ fi
 # .TODO:  Use script arguments.  Php or just class name?
 # PHPUnit test supplied test files.
 shouldBeParameter="web/modules/contrib/localgov_services/tests/src/FunctionalJavascript/ServicesMenuGroupTest.php"
-echo "Running tests on: " . $shouldBeParameter
+echo "Running tests on: $shouldBeParameter"
 docker exec -t drupal bash -c "mkdir -p /var/www/html/web/sites/simpletest && chmod 777 /var/www/html/web/sites/simpletest"
 # Update PHPUnit's env var declarations; Paratest does not pass these to PHPUnit :(
 docker exec -u docker -t drupal bash -c 'sed -i "s#http://localgov.lndo.site#http://drupal#; s#mysql://database:database@database/database#sqlite://localhost//dev/shm/test.sqlite#" /var/www/html/phpunit.xml.dist'
@@ -43,7 +43,7 @@ docker exec -u docker -t drupal bash -c 'sed -i "s#http://localgov.lndo.site#htt
 # Experiment: with number of processes to test if it's disk/db/? bound
 # docker exec -u docker -t drupal bash -c "cd /var/www/html && ./bin/paratest --processes=4 --verbose=1"
 # TODO:: Substitute $shouldBeParameter here:
-docker exec -u docker -t drupal bash -c "cd /var/www/html && /usr/bin/php7.4 '/var/www/html/vendor/phpunit/phpunit/phpunit' '--configuration' '/var/www/html/phpunit.xml.dist' '--log-junit' '/tmp' '/var/www/html/web/modules/contrib/localgov_services/tests/src/FunctionalJavascript/ServicesMenuGroupTest.php'
+docker exec -u docker -t drupal bash -c "cd /var/www/html && /usr/bin/php7.4 '/var/www/html/vendor/phpunit/phpunit/phpunit' '--configuration' '/var/www/html/phpunit.xml.dist' '--log-junit' '/tmp' '/var/www/html/web/modules/contrib/localgov_services/tests/src/FunctionalJavascript/ServicesMenuGroupTest.php'"
 
 if [ $? -ne 0 ]; then
   ((RESULT++))
