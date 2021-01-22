@@ -40,9 +40,11 @@ docker exec -u docker -t drupal bash -c 'sed -i "s#http://localgov.lndo.site#htt
 
 # TODO: Where does paratest get it's todo list from?
 # ... change it to the supplied test files
-# Experiment: 8 processes in case it's disk/db bound
+# Experiment: with number of processes to test if it's disk/db/? bound
 # docker exec -u docker -t drupal bash -c "cd /var/www/html && ./bin/paratest --processes=4 --verbose=1"
-docker exec -u docker -t drupal bash -c "cd /var/www/html && ./bin/paratest --processes=8 --verbose=1"
+# TODO:: Substitute $shouldBeParameter here:
+docker exec -u docker -t drupal bash -c "cd /var/www/html && /usr/bin/php7.4 '/var/www/html/vendor/phpunit/phpunit/phpunit' '--configuration' '/var/www/html/phpunit.xml.dist' '--log-junit' '/tmp' '/var/www/html/web/modules/contrib/localgov_services/tests/src/FunctionalJavascript/ServicesMenuGroupTest.php'
+
 if [ $? -ne 0 ]; then
   ((RESULT++))
 fi
